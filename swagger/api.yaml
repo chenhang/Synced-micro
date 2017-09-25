@@ -1,0 +1,44 @@
+swagger: "2.0"
+
+info:
+  title: "My first API"
+  version: "1.0"
+
+basePath: /v1
+
+paths:
+  /tagging/:
+    post:
+      operationId: api.tag.class_instance.post
+      parameters:
+        - in: body
+          name: article
+          required: true
+          schema:
+            $ref: '#/definitions/Article'
+      responses:
+        '200':
+          description: 'Fetch tags from article'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Tag'
+
+definitions:
+  Tag:
+    type: string
+  Article:
+    type: object
+    required:
+      - title
+      - description
+      - content
+    properties:
+      id:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      content:
+        type: string
